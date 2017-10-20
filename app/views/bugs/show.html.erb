@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @bug.project %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @bug.user %>
+</p>
+
+<p>
+  <strong>Assigned to:</strong>
+  <%= @bug.assigned_to %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @bug.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @bug.description %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @bug.bug_type %>
+</p>
+
+<p>
+  <strong>Screeshot:</strong>
+  <%= image_tag @bug.screenshot.url %>
+</p>
+
+<%= link_to 'Edit', edit_bug_path(@bug) %> |
+<%= link_to 'Back', bugs_path %>

@@ -1,0 +1,31 @@
+<%= simple_form_for(@bug) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :project, :label_method => :name %>
+    <%= f.association :assigned, :collection => User.where(:user_type => User.roles["Developer"]), :label_method => :email %>
+    <%= f.input :title, required: true %>
+    <%= f.input :description, required: true %>
+    <%= f.input :bug_type, required: true, collection: Bug.types  %>
+    <%= f.input :status, required: true, as: :select, collection: Bug.bug_status   %>
+    <%= f.input :deadline, as: :date, required: true %>
+    <%= f.input :screenshot, as: :file %>
+  </div>
+
+  <br />
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+ <script type="text/javascript">
+   (function($){
+    $("#bug_type").change(function(e){
+      var bug = $(this).val().toLowerCase() === 'bug';
+
+      $("#bug_status").children("option").last().text(bug ? "resolved" : "completed");
+    })
+   })(jQuery);
+ </script>
